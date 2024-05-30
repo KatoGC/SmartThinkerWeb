@@ -1,14 +1,37 @@
 /* styles.css */
 
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(100px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
 body {
     margin: 0;
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(to right, #0066ff, #66ccff);
+    background: linear-gradient(to bottom, #0066ffc4, #ff66fa);
     color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    animation: fadeIn 1s ease-in-out;
 }
 
 .container {
@@ -19,6 +42,7 @@ body {
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(10px);
+    animation: slideIn 1s ease-in-out;
 }
 
 h2 {
@@ -30,7 +54,7 @@ input,
 button,
 select {
     width: 100%;
-    padding: 10px;
+    padding: 10px 1px;
     margin: 10px 0;
     border: none;
     border-radius: 5px;
@@ -42,14 +66,14 @@ input {
 }
 
 button {
-    background: #ff6600;
+    background: #0066ffc4;
     color: #fff;
     cursor: pointer;
     transition: background 0.3s ease;
 }
 
 button:hover {
-    background: #ff8533;
+    background: #ff66fa;
 }
 
 .signInText {
@@ -59,15 +83,16 @@ button:hover {
 
 .signInTextBold {
     font-weight: bold;
-    color: #ff6600;
+    color: #0066ffc4;
     cursor: pointer;
 }
 
 input::placeholder {
+    padding-left: 10px;
     color: #ccc;
 }
 
 a {
-    color: #ff6600;
+    color: #fff;
     text-decoration: none;
 }

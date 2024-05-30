@@ -1,59 +1,35 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useEffect, useState } from "react";
+import api from "../axiosConfig";
 
-function Courses() {
+const Courses = () => {
   const [courses, setCourses] = useState([]);
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
 
   useEffect(() => {
+    const fetchCourses = async () => {
+      try {
+        const response = await api.get("/courses");
+        setCourses(response.data.data);
+      } catch (error) {
+        console.error("Error fetching courses:", error);
+      }
+    };
+
     fetchCourses();
   }, []);
 
-  const fetchCourses = async () => {
-    try {
-      const response = await axios.get("http://localhost:1337/api/courses");
-      setCourses(response.data);
-    } catch (error) {
-      console.error("Error fetching courses:", error);
-    }
-  };
-
-  const handleCreateCourse = async () => {
-    try {
-      const response = await axios.post("http://localhost:1337/api/courses", {
-        title,
-        description,
-      });
-      setCourses([...courses, response.data]);
-    } catch (error) {
-      console.error("Error creating course:", error);
-    }
-  };
-
   return (
-    <div>
-      <h2>Courses</h2>
-      <input
-        type="text"
-        placeholder="Course Title"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-      />
-      <input
-        type="text"
-        placeholder="Course Description"
-        value={description}
-        onChange={(e) => setDescription(e.target.value)}
-      />
-      <button onClick={handleCreateCourse}>Create Course</button>
+    <div className="container">
+      <h2>Cursos Disponibles</h2>
       <ul>
         {courses.map((course) => (
-          <li key={course.id}>{course.title}</li>
+          <li key={course.id}>
+            <h3>{course.attributes.title}</h3>
+            <p>{course.attributes.description}</p>
+          </li>
         ))}
       </ul>
     </div>
   );
-}
+};
 
 export default Courses;

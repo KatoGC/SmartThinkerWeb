@@ -1,22 +1,22 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Login from './screens/Login';
-import SignUp from './screens/SignUp';
-import User from './screens/User';
-import Courses from './screens/Courses';
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Login from "./screens/Login";
+import Signup from "./screens/SignUp";
+import UserProfile from "./screens/User";
+import Courses from "./screens/Courses";
+import CreateCourse from "./screens/CreateCourse";
+import "./styles/styles.css";
 
 function App() {
   return (
     <Router>
-      <div>
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/user" element={<User />} />
-          <Route path="/courses" element={<Courses />} />
-          <Route path="/" element={<Login />} />
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/user" element={<UserProfile />} />
+        <Route path="/courses" element={<Courses />} />
+        <Route path="/create-course" element={<CreateCourse />} />
+      </Routes>
     </Router>
   );
 }

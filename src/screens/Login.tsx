@@ -27,7 +27,7 @@ function Login() {
   };
 
   return (
-    <div className="contianer fade-in">
+    <div className="container">
       <h2>Login</h2>
       <input
         type="email"
@@ -42,7 +42,7 @@ function Login() {
         onChange={(e) => setPassword(e.target.value)}
       />
       <button onClick={handleLogin}>Login</button>
-      <a href="/signup" className="link">No tienes cuenta? Registrate</a>
+      <a href="/signup" className="link">No tienes cuenta? <span className="signInTextBold">Registrate</span></a>
     </div>
   );
 }

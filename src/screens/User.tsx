@@ -1,27 +1,39 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import api from "../axiosConfig";
 
-function User() {
-  const token = localStorage.getItem("token");
-  const navigate = useNavigate();
+const UserProfile = () => {
+  const [user, setUser] = useState(null);
 
-  if (!token) {
-    return <p>Please log in first</p>;
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const response = await api.get("/users/me");
+        setUser(response.data);
+      } catch (error) {
+        console.error("Error fetching user profile:", error);
+      }
+    };
+
+    fetchUser();
+  }, []);
+
+  if (!user) {
+    return <div>Loading...</div>;
   }
 
-  // Decodifica el token para obtener la información del usuario
-  // Esto es solo un ejemplo, en producción deberías usar una biblioteca como jwt-decode
-  const user = JSON.parse(atob(token.split(".")[1]));
-
   return (
-    <div>
-      <h2>User Profile</h2>
-      <p>First Name: {user.firstName}</p>
-      <p>Last Name: {user.lastName}</p>
+    <div className="container">
+      <h2>Perfil del Usuario</h2>
+      <p>
+        Nombre: {user.firstName} {user.lastName}
+      </p>
       <p>Email: {user.email}</p>
-      <button onClick={() => navigate("/courses")}>Go to Courses</button>
+      <p>Ocupación: {user.occupation}</p>
+      <p>Edad: {user.age}</p>
+      <p>Rol: {user.role}</p>
+      <p>Descripción: {user.description}</p>
     </div>
   );
-}
+};
 
-export default User;
+export default UserProfile;
