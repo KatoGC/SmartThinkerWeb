@@ -45,6 +45,11 @@ body {
     animation: slideIn 1s ease-in-out;
 }
 
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
 h2 {
     text-align: center;
     margin-bottom: 20px;
@@ -95,4 +100,14 @@ input::placeholder {
 a {
     color: #fff;
     text-decoration: none;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px 1px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
 }
