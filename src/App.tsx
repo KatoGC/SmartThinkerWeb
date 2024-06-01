@@ -1,11 +1,11 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
-import Login from './screens/Login';
-import SignUp from './screens/SignUp';
-import UserProfile from './screens/UserProfile';
-import Courses from './screens/Courses';
-import CreateCourse from './screens/CreateCourse';
-import ProtectedRoute from './screens/ProtectedRoute'
+import Login from './components/Login';
+import SignUp from './components/SignUp';
+import UserProfile from './components/UserProfile';
+import Courses from './components/Courses';
+import CreateCourse from './components/CreateCourse';
+import ProtectedRoute from './components/ProtectedRoute';
 import './styles/styles.css';
 
 function App() {

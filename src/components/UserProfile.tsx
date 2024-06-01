@@ -46,14 +46,25 @@ const UserProfile = () => {
       <div className="container">
         <h1 className="textTitle">SmartThinker Web Version</h1>
         <h2>Perfil del Usuario</h2>
-        <p>
-          <strong>Nombre:</strong> {user.username}
-        </p>
-        <p>
-          <strong>Email:</strong> {user.email}
-        </p>
+        <div className="user-container">
+          <p>
+            <strong>Nombre:</strong> {user.username}
+          </p>
+          <p>
+            <strong>Email:</strong> {user.email}
+          </p>
+          <p>
+            <strong>Edad:</strong> {user.age}
+          </p>
+          <p>
+            <strong>Ocupacion:</strong> {user.occupation}
+          </p>
+          <p>
+            <strong>Descipcion:</strong> {user.description}
+          </p>
+        </div>
         <button onClick={handleLogout}>Cerrar Sesión</button>
-        <button onClick={()=> navigate("/courses")}>Ver Cursos</button>
+        <button onClick={() => navigate("/courses")}>Ver Cursos</button>
       </div>
     </>
   );

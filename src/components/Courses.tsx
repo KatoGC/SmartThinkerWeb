@@ -13,6 +13,7 @@ const Courses = () => {
         const coursesData = response.data.data.map((course) => ({
           id: course.id,
           title: course.attributes.title || "Sin título", // Manejo de título nulo
+          description: course.attributes.description || "Sin descripción", // Manejo de descripción nula
         }));
         setCourses(coursesData);
       } catch (error) {
@@ -31,7 +32,10 @@ const Courses = () => {
       <p>Lista de cursos:</p>
       <ul>
         {courses.map((course) => (
-          <li key={course.id}>{course.title}</li>
+          <li key={course.id}>
+            <h3>{course.title}</h3>
+            <p>{course.description}</p>
+          </li>
         ))}
       </ul>
       <button onClick={() => navigate("/create-course")}>Crear Curso</button>
